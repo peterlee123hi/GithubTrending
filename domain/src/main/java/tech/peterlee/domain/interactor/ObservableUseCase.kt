@@ -5,10 +5,10 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
-import tech.peterlee.domain.executor.PostThreadExecution
+import tech.peterlee.domain.executor.PostExecutionThread
 
 abstract class ObservableUseCase<T, in Params> constructor(
-        private val postThreadExecution: PostThreadExecution
+        private val postExecutionThread: PostExecutionThread
 ) {
 
     private val disposables = CompositeDisposable()
@@ -18,7 +18,7 @@ abstract class ObservableUseCase<T, in Params> constructor(
     open fun execute(observer: DisposableObserver<T>, params: Params? = null) {
         val observable = this.createObservable(params)
                 .subscribeOn(Schedulers.io())
-                .observeOn(postThreadExecution.scheduler)
+                .observeOn(postExecutionThread.scheduler)
         this.addDisposable(observable.subscribeWith(observer))
     }
 

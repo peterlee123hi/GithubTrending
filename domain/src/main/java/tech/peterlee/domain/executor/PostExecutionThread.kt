@@ -2,6 +2,6 @@ package tech.peterlee.domain.executor
 
 import io.reactivex.Scheduler
 
-interface PostThreadExecution {
+interface PostExecutionThread {
     val scheduler: Scheduler
 }
