@@ -1,0 +1,32 @@
+package tech.peterlee.domain.interactor
+
+import io.reactivex.Completable
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
+import io.reactivex.observers.DisposableCompletableObserver
+import io.reactivex.schedulers.Schedulers
+import tech.peterlee.domain.executor.PostThreadExecution
+
+abstract class CompletableUseCase<in Params> constructor(
+        private val postThreadExecution: PostThreadExecution
+) {
+
+    private val disposables = CompositeDisposable()
+
+    protected abstract fun createCompletable(params: Params? = null): Completable
+
+    open fun execute(observer: DisposableCompletableObserver, params: Params? = null) {
+        val completable = this.createCompletable(params)
+                .subscribeOn(Schedulers.io())
+                .observeOn(postThreadExecution.scheduler)
+        this.addDisposable(completable.subscribeWith(observer))
+    }
+
+    fun dispose() {
+        disposables.dispose()
+    }
+
+    private fun addDisposable(disposable: Disposable) {
+        this.disposables.add(disposable)
+    }
+}

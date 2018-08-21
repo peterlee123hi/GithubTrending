@@ -1,0 +1,31 @@
+ext {
+    androidBuildToolsVersion = "28.0.2"
+    androidMinSdkVersion = 19
+    androidTargetSdkVersion = 28
+    androidCompileSdkVersion = 28
+    kotlinVersion = "1.2.61"
+
+    // Libraries
+    supportLibraryVersion = "27.1.1"
+    rxJavaVersion = "2.2.0"
+    rxAndroidVersion = "2.1.0"
+    javaxAnnotationVersion = "1.0"
+    javaxInjectVersion = "1"
+
+    // Testing
+    jUnitVersion = "4.12"
+    assertJVersion = "3.11.0"
+    mockitoKotlinVersion = "2.0.0-RC1"
+
+    domainDependencies = [
+            javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            javaxInject:        "javax.inject:javax.inject:${javaxInjectVersion}",
+            rxJava:             "io.reactivex.rxjava2:rxkotlin:${rxJavaVersion}"
+    ]
+
+    domainTestDependencies = [
+            junit:              "junit:junit:${jUnitVersion}",
+            mockito:            "com.nhaarman.mockitokotlin2:mockito-kotlin:${mockitoKotlinVersion}",
+            assertj:            "org.assertj:assertj-core:${assertJVersion}"
+    ]
+}
