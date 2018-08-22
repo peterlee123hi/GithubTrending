@@ -1,0 +1,39 @@
+package tech.peterlee.data.store
+
+import io.reactivex.Completable
+import io.reactivex.Observable
+import tech.peterlee.data.model.ProjectEntity
+import tech.peterlee.data.repository.ProjectsDataStore
+import tech.peterlee.data.repository.ProjectsRemote
+import javax.inject.Inject
+
+class ProjectsRemoteDataStore @Inject constructor(
+        private val projectsRemote: ProjectsRemote
+) : ProjectsDataStore {
+
+    override fun getProjects(): Observable<List<ProjectEntity>> {
+        return projectsRemote.getProjects()
+    }
+
+    override fun saveProjects(projects: List<ProjectEntity>): Completable {
+        throw UnsupportedOperationException("Saving projects isn't supported in the remote")
+    }
+
+    override fun clearProjects(): Completable {
+        throw UnsupportedOperationException("Clearing projects isn't supported in the remote")
+    }
+
+    override fun getBookmarkedProjects(): Observable<List<ProjectEntity>> {
+        throw UnsupportedOperationException("Bookmarking projects isn't supported in the remote")
+    }
+
+    override fun setProjectAsBookmarked(projectId: String): Completable {
+        throw UnsupportedOperationException("Setting projects as bookmarked isn't supported " +
+                "in the remote")
+    }
+
+    override fun setProjectAsNotBookmarked(projectId: String): Completable {
+        throw UnsupportedOperationException("Setting projects as not bookmarked isn't supported " +
+                "in the remote")
+    }
+}
