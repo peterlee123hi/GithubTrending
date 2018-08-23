@@ -14,12 +14,17 @@ ext {
     javaxInjectVersion = "1"
     androidAnnotationsVersion = "21.0.3"
     daggerVersion = "2.17"
+    gsonVersion = "2.8.5"
+    okHttpVersion = "3.11.0"
+    retrofitVersion = "2.4.0"
 
     // Testing
     jUnitVersion = "4.12"
     assertJVersion = "3.11.0"
     mockitoKotlinVersion = "2.0.0-RC1"
     robolectricVersion = "3.8"
+    androidSupportRunnerVersion = "1.0.1"
+    androidSupportRulesVersion = "1.0.1"
 
     domainDependencies = [
             javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
@@ -46,5 +51,29 @@ ext {
             mockito:            "com.nhaarman.mockitokotlin2:mockito-kotlin:${mockitoKotlinVersion}",
             assertj:            "org.assertj:assertj-core:${assertJVersion}",
             robolectric:        "org.robolectric:robolectric:${robolectricVersion}"
+    ]
+
+    remoteDependencies = [
+            gson:               "com.google.code.gson:gson:${gsonVersion}",
+            rxKotlin:           "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}",
+            kotlin:             "org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}",
+            javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            javaxInject:        "javax.inject:javax.inject:${javaxInjectVersion}",
+            androidAnnotations: "com.android.support:support-annotations:${androidAnnotationsVersion}",
+            okHttp:             "com.squareup.okhttp3:okhttp:${okHttpVersion}",
+            okHttpLogger:      "com.squareup.okhttp3:logging-interceptor:${okHttpVersion}",
+            retrofit:           "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            retrofitConverter:  "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+            retrofitAdapter:    "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}"
+    ]
+
+    remoteTestDependencies = [
+            junit:              "junit:junit:${jUnitVersion}",
+            kotlinJUnit:        "org.jetbrains.kotlin:kotlin-test-junit:${kotlinVersion}",
+            mockito:            "com.nhaarman.mockitokotlin2:mockito-kotlin:${mockitoKotlinVersion}",
+            assertj:            "org.assertj:assertj-core:${assertJVersion}",
+            robolectric:        "org.robolectric:robolectric:${robolectricVersion}",
+            supportRunner:      "com.android.support.test:runner:${androidSupportRunnerVersion}",
+            supportRules:       "com.android.support.test:rules:${androidSupportRulesVersion}"
     ]
 }
