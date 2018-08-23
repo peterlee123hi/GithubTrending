@@ -19,7 +19,6 @@ ext {
     jUnitVersion = "4.12"
     assertJVersion = "3.11.0"
     mockitoKotlinVersion = "2.0.0-RC1"
-    mockitoVersion = "2.13.0"
     robolectricVersion = "3.8"
 
     domainDependencies = [
