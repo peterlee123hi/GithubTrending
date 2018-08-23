@@ -17,12 +17,14 @@ ext {
     gsonVersion = "2.8.5"
     okHttpVersion = "3.11.0"
     retrofitVersion = "2.4.0"
+    roomVersion = "1.1.0"
 
     // Testing
     jUnitVersion = "4.12"
     assertJVersion = "3.11.0"
     mockitoKotlinVersion = "2.0.0-RC1"
     robolectricVersion = "3.8"
+    androidSupportAnnotationsVersion = "27.1.1"
     androidSupportRunnerVersion = "1.0.1"
     androidSupportRulesVersion = "1.0.1"
 
@@ -73,6 +75,29 @@ ext {
             mockito:            "com.nhaarman.mockitokotlin2:mockito-kotlin:${mockitoKotlinVersion}",
             assertj:            "org.assertj:assertj-core:${assertJVersion}",
             robolectric:        "org.robolectric:robolectric:${robolectricVersion}",
+            supportRunner:      "com.android.support.test:runner:${androidSupportRunnerVersion}",
+            supportRules:       "com.android.support.test:rules:${androidSupportRulesVersion}"
+    ]
+
+    cacheDependencies = [
+            rxKotlin:           "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}",
+            kotlin:             "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}",
+            javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            javaxInject:        "javax.inject:javax.inject:${javaxInjectVersion}",
+            roomRuntime:        "android.arch.persistence.room:runtime:${roomVersion}",
+            roomCompiler:       "android.arch.persistence.room:compiler:${roomVersion}",
+            roomRxJava:         "android.arch.persistence.room:rxjava2:${roomVersion}"
+    ]
+
+    cacheTestDependencies = [
+            junit:              "junit:junit:${jUnitVersion}",
+            kotlinJUnit:        "org.jetbrains.kotlin:kotlin-test-junit:${kotlinVersion}",
+            mockito:            "com.nhaarman.mockitokotlin2:mockito-kotlin:${mockitoKotlinVersion}",
+            assertj:            "org.assertj:assertj-core:${assertJVersion}",
+            robolectric:        "org.robolectric:robolectric:${robolectricVersion}",
+            roomTesting:        "android.arch.persistence.room:testing:${roomVersion}",
+            archTesting:        "android.arch.core:core-testing:${roomVersion}",
+            supportAnnotations: "com.android.support:support-annotations:${androidSupportAnnotationsVersion}",
             supportRunner:      "com.android.support.test:runner:${androidSupportRunnerVersion}",
             supportRules:       "com.android.support.test:rules:${androidSupportRulesVersion}"
     ]
