@@ -3,7 +3,7 @@ package tech.peterlee.data.store
 import tech.peterlee.data.repository.ProjectsDataStore
 import javax.inject.Inject
 
-class ProjectsDataStoreFactory  @Inject constructor(
+class ProjectsDataStoreFactory @Inject constructor(
     private val projectsCacheDataStore: ProjectsCacheDataStore,
     private val projectsRemoteDataStore: ProjectsRemoteDataStore
 ) {
@@ -16,7 +16,7 @@ class ProjectsDataStoreFactory  @Inject constructor(
         }
     }
 
-    open fun getCacheDataStore(): ProjectsDataStore {
+    fun getCacheDataStore(): ProjectsDataStore {
         return projectsCacheDataStore
     }
 }

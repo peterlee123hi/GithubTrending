@@ -1,6 +1,7 @@
 package tech.peterlee.data.store
 
 import io.reactivex.Completable
+import io.reactivex.Flowable
 import io.reactivex.Observable
 import tech.peterlee.data.model.ProjectEntity
 import tech.peterlee.data.repository.ProjectsCache
@@ -11,7 +12,7 @@ class ProjectsCacheDataStore @Inject constructor(
         private val projectsCache: ProjectsCache
 ) : ProjectsDataStore {
 
-    override fun getProjects(): Observable<List<ProjectEntity>> {
+    override fun getProjects(): Flowable<List<ProjectEntity>> {
         return projectsCache.getProjects()
     }
 
@@ -24,7 +25,7 @@ class ProjectsCacheDataStore @Inject constructor(
         return projectsCache.clearProjects()
     }
 
-    override fun getBookmarkedProjects(): Observable<List<ProjectEntity>> {
+    override fun getBookmarkedProjects(): Flowable<List<ProjectEntity>> {
         return projectsCache.getBookmarkedProjects()
     }
 

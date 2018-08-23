@@ -1,6 +1,7 @@
 package tech.peterlee.data.store
 
 import io.reactivex.Completable
+import io.reactivex.Flowable
 import io.reactivex.Observable
 import tech.peterlee.data.model.ProjectEntity
 import tech.peterlee.data.repository.ProjectsDataStore
@@ -11,7 +12,7 @@ class ProjectsRemoteDataStore @Inject constructor(
         private val projectsRemote: ProjectsRemote
 ) : ProjectsDataStore {
 
-    override fun getProjects(): Observable<List<ProjectEntity>> {
+    override fun getProjects(): Flowable<List<ProjectEntity>> {
         return projectsRemote.getProjects()
     }
 
@@ -23,7 +24,7 @@ class ProjectsRemoteDataStore @Inject constructor(
         throw UnsupportedOperationException("Clearing projects isn't supported in the remote")
     }
 
-    override fun getBookmarkedProjects(): Observable<List<ProjectEntity>> {
+    override fun getBookmarkedProjects(): Flowable<List<ProjectEntity>> {
         throw UnsupportedOperationException("Bookmarking projects isn't supported in the remote")
     }
 

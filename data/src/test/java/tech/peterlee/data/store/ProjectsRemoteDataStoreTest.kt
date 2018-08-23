@@ -3,7 +3,7 @@ package tech.peterlee.data.store
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
-import io.reactivex.Observable
+import io.reactivex.Flowable
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
@@ -20,14 +20,14 @@ class ProjectsRemoteDataStoreTest {
 
     @Test
     fun getProjectsCompletes() {
-        stubRemoteGetProjects(Observable.just(listOf(ProjectFactory.makeProjectEntity())))
+        stubRemoteGetProjects(Flowable.just(listOf(ProjectFactory.makeProjectEntity())))
         val testObserver = store.getProjects().test()
         testObserver.assertComplete()
     }
 
     @Test
     fun getProjectsCallsRemote() {
-        stubRemoteGetProjects(Observable.just(listOf(ProjectFactory.makeProjectEntity())))
+        stubRemoteGetProjects(Flowable.just(listOf(ProjectFactory.makeProjectEntity())))
         store.getProjects()
         verify(remote).getProjects()
     }
@@ -35,7 +35,7 @@ class ProjectsRemoteDataStoreTest {
     @Test
     fun getProjectsReturnsData() {
         val data = listOf(ProjectFactory.makeProjectEntity())
-        stubRemoteGetProjects(Observable.just(data))
+        stubRemoteGetProjects(Flowable.just(data))
         val testObserver = store.getProjects().test()
         testObserver.assertValue(data)
     }
@@ -65,8 +65,8 @@ class ProjectsRemoteDataStoreTest {
         store.setProjectAsNotBookmarked(DataFactory.randomString()).test()
     }
 
-    private fun stubRemoteGetProjects(observable: Observable<List<ProjectEntity>>) {
+    private fun stubRemoteGetProjects(flowable: Flowable<List<ProjectEntity>>) {
         whenever(store.getProjects())
-                .thenReturn(observable)
+                .thenReturn(flowable)
     }
 }

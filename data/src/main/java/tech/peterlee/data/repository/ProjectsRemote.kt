@@ -1,9 +1,9 @@
 package tech.peterlee.data.repository
 
-import io.reactivex.Observable
+import io.reactivex.Flowable
 import tech.peterlee.data.model.ProjectEntity
 
 interface ProjectsRemote {
 
-    fun getProjects(): Observable<List<ProjectEntity>>
+    fun getProjects(): Flowable<List<ProjectEntity>>
 }
