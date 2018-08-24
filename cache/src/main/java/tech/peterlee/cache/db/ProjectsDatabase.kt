@@ -13,7 +13,7 @@ import javax.inject.Inject
 @Database(entities = arrayOf(CachedProject::class, Config::class), version = 1)
 abstract class ProjectsDatabase @Inject constructor(): RoomDatabase() {
 
-    abstract fun cachedProjectDao(): CachedProjectsDao
+    abstract fun cachedProjectsDao(): CachedProjectsDao
 
     abstract fun configDao(): ConfigDao
 

@@ -6,7 +6,7 @@ import android.arch.persistence.room.PrimaryKey
 import tech.peterlee.cache.db.ProjectConstants
 
 @Entity(tableName = ProjectConstants.TABLE_NAME)
-class CachedProject(
+data class CachedProject(
         @PrimaryKey
         @ColumnInfo(name = ProjectConstants.COLUMN_PROJECT_ID)
         var id: String,

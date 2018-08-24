@@ -5,6 +5,7 @@ import io.reactivex.Flowable
 import io.reactivex.Single
 import tech.peterlee.cache.db.ProjectsDatabase
 import tech.peterlee.cache.mapper.CachedProjectMapper
+import tech.peterlee.cache.model.Config
 import tech.peterlee.data.model.ProjectEntity
 import tech.peterlee.data.repository.ProjectsCache
 import javax.inject.Inject
@@ -16,14 +17,14 @@ class ProjectsCacheImpl @Inject constructor(
 
     override fun clearProjects(): Completable {
         return Completable.defer {
-            projectsDatabase.cachedProjectDao().deleteProjects()
+            projectsDatabase.cachedProjectsDao().deleteProjects()
             Completable.complete()
         }
     }
 
     override fun saveProjects(projects: List<ProjectEntity>): Completable {
         return Completable.defer {
-            projectsDatabase.cachedProjectDao().insertProjects(
+            projectsDatabase.cachedProjectsDao().insertProjects(
                     projects.map {
                         mapper.mapToCached(it)
                     }
@@ -33,7 +34,7 @@ class ProjectsCacheImpl @Inject constructor(
     }
 
     override fun getProjects(): Flowable<List<ProjectEntity>> {
-        return projectsDatabase.cachedProjectDao().getBookmarkedProjects()
+        return projectsDatabase.cachedProjectsDao().getProjects()
                 .map {
                     it.map {
                         mapper.mapFromCached(it)
@@ -42,26 +43,49 @@ class ProjectsCacheImpl @Inject constructor(
     }
 
     override fun getBookmarkedProjects(): Flowable<List<ProjectEntity>> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return projectsDatabase.cachedProjectsDao().getBookmarkedProjects()
+                .map {
+                    it.map {
+                        mapper.mapFromCached(it)
+                    }
+                }
     }
 
     override fun setProjectAsBookmarked(projectId: String): Completable {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return Completable.defer {
+            projectsDatabase.cachedProjectsDao().setBookmarkStatus(true, projectId)
+            Completable.complete()
+        }
     }
 
     override fun setProjectAsNotBookmarked(projectId: String): Completable {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return Completable.defer {
+            projectsDatabase.cachedProjectsDao().setBookmarkStatus(false, projectId)
+            Completable.complete()
+        }
     }
 
     override fun areProjectsCached(): Single<Boolean> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return projectsDatabase.cachedProjectsDao().getProjects().isEmpty
+                .map {
+                    !it
+                }
     }
 
     override fun setLastCacheTime(lastCache: Long): Completable {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return Completable.defer {
+            projectsDatabase.configDao().insertConfig(Config(lastCacheTime = lastCache))
+            Completable.complete()
+        }
     }
 
     override fun isProjectsCacheExpired(): Single<Boolean> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val currentTime = System.currentTimeMillis()
+        val expirationTime = (60 * 10 * 1000).toLong()
+        return projectsDatabase.configDao().getConfig()
+                .onErrorReturn { throw Error() }
+                .map {
+                    currentTime - it.lastCacheTime > expirationTime
+                }
     }
 }
