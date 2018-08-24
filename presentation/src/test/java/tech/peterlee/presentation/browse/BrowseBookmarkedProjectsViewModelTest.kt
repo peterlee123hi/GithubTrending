@@ -1,4 +1,4 @@
-package tech.peterlee.presentation.bookmarked
+package tech.peterlee.presentation.browse
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule
 import com.nhaarman.mockitokotlin2.*

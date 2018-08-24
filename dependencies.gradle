@@ -18,7 +18,7 @@ ext {
     okHttpVersion = "3.11.0"
     retrofitVersion = "2.4.0"
     roomVersion = "1.1.0"
-    archComponentsVersion = "1.0.0"
+    archComponentsVersion = "1.1.1"
 
     // Testing
     jUnitVersion = "4.12"

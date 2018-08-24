@@ -19,16 +19,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-    testOptions {
-        unitTests.all {
-            jvmArgs '-noverify'
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
 }
 
 kapt {
@@ -38,6 +28,7 @@ kapt {
 dependencies {
     def presentationDependencies = rootProject.ext.presentationDependencies
     def presentationTestDependencies = rootProject.ext.presentationTestDependencies
+
     implementation project(':domain')
     implementation presentationDependencies.kotlin
     implementation presentationDependencies.rxKotlin
@@ -46,6 +37,7 @@ dependencies {
     implementation presentationDependencies.archRuntime
     implementation presentationDependencies.archExtensions
     kapt presentationDependencies.archCompiler
+
     testImplementation presentationTestDependencies.junit
     testImplementation presentationTestDependencies.mockito
     testImplementation presentationTestDependencies.assertj
