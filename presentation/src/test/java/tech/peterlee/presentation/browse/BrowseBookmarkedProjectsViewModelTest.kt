@@ -2,8 +2,11 @@ package tech.peterlee.presentation.browse
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule
 import com.nhaarman.mockitokotlin2.*
+import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.observers.DisposableObserver
+import io.reactivex.schedulers.Schedulers
 import junit.framework.TestCase.assertEquals
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -12,6 +15,7 @@ import org.mockito.Captor
 import tech.peterlee.domain.interactor.browse.GetBookmarkedProjects
 import tech.peterlee.domain.model.Project
 import tech.peterlee.presentation.BrowseBookmarkedProjectsViewModel
+import tech.peterlee.presentation.BrowseProjectsViewModel
 import tech.peterlee.presentation.mapper.ProjectViewMapper
 import tech.peterlee.presentation.model.ProjectView
 import tech.peterlee.presentation.state.ResourceState
@@ -23,19 +27,27 @@ class BrowseBookmarkedProjectsViewModelTest {
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
-    var getBookmarkedProjects = mock<GetBookmarkedProjects>()
-    var mapper = mock<ProjectViewMapper>()
-    var projectViewModel = BrowseBookmarkedProjectsViewModel(
-            getBookmarkedProjects, mapper)
+
+    private var getBookmarkedProjects = mock<GetBookmarkedProjects>()
+    private var mapper = mock<ProjectViewMapper>()
+    private lateinit var projectViewModel: BrowseBookmarkedProjectsViewModel
 
     @Captor
     val captor = argumentCaptor<DisposableObserver<List<Project>>>()
+
+    @Before
+    fun setup() {
+        RxAndroidPlugins.setInitMainThreadSchedulerHandler {
+            _ -> Schedulers.trampoline()
+        }
+        projectViewModel = BrowseBookmarkedProjectsViewModel(getBookmarkedProjects, mapper)
+    }
 
     @Test
     fun fetchProjectsExecutesUseCase() {
         projectViewModel.fetchProjects()
 
-        verify(getBookmarkedProjects, times(1)).execute(any(), eq(null))
+        verify(getBookmarkedProjects, times(2)).execute(any(), eq(null))
     }
 
     @Test
@@ -47,7 +59,7 @@ class BrowseBookmarkedProjectsViewModelTest {
 
         projectViewModel.fetchProjects()
 
-        verify(getBookmarkedProjects).execute(captor.capture(), eq(null))
+        verify(getBookmarkedProjects, times(2)).execute(captor.capture(), eq(null))
         captor.firstValue.onNext(projects)
 
         assertEquals(ResourceState.SUCCESS,
@@ -63,7 +75,7 @@ class BrowseBookmarkedProjectsViewModelTest {
 
         projectViewModel.fetchProjects()
 
-        verify(getBookmarkedProjects).execute(captor.capture(), eq(null))
+        verify(getBookmarkedProjects, times(2)).execute(captor.capture(), eq(null))
         captor.firstValue.onNext(projects)
 
         assertEquals(projectViews,
@@ -74,7 +86,7 @@ class BrowseBookmarkedProjectsViewModelTest {
     fun fetchProjectsReturnsError() {
         projectViewModel.fetchProjects()
 
-        verify(getBookmarkedProjects).execute(captor.capture(), eq(null))
+        verify(getBookmarkedProjects, times(2)).execute(captor.capture(), eq(null))
         captor.firstValue.onError(RuntimeException())
 
         assertEquals(ResourceState.ERROR,
@@ -86,7 +98,7 @@ class BrowseBookmarkedProjectsViewModelTest {
         val errorMessage = DataFactory.randomString()
         projectViewModel.fetchProjects()
 
-        verify(getBookmarkedProjects).execute(captor.capture(), eq(null))
+        verify(getBookmarkedProjects, times(2)).execute(captor.capture(), eq(null))
         captor.firstValue.onError(RuntimeException(errorMessage))
 
         assertEquals(errorMessage,

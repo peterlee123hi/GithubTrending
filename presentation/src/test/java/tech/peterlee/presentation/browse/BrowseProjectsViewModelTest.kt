@@ -5,7 +5,7 @@ import com.nhaarman.mockitokotlin2.*
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.observers.DisposableObserver
-import org.junit.Assert.assertEquals
+import junit.framework.TestCase.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -32,7 +32,7 @@ class BrowseProjectsViewModelTest {
     private var getProjects = mock<GetProjects>()
     private var bookmarkProject = mock<BookmarkProject>()
     private var unbookmarkProject = mock<UnbookmarkProject>()
-    private var projectMapper = mock<ProjectViewMapper>()
+    private var mapper = mock<ProjectViewMapper>()
     private lateinit var projectViewModel: BrowseProjectsViewModel
 
     @Captor
@@ -43,14 +43,14 @@ class BrowseProjectsViewModelTest {
         RxAndroidPlugins.setInitMainThreadSchedulerHandler {
             _ -> Schedulers.trampoline()
         }
-        projectViewModel = BrowseProjectsViewModel(getProjects, bookmarkProject, unbookmarkProject, projectMapper)
+        projectViewModel = BrowseProjectsViewModel(getProjects, mapper, bookmarkProject, unbookmarkProject)
     }
 
     @Test
     fun fetchProjectsExecutesUseCase() {
         projectViewModel.fetchProjects()
 
-        verify(getProjects).execute(any(), eq(null))
+        verify(getProjects, times(2)).execute(any(), eq(null))
     }
 
     @Test
@@ -62,7 +62,7 @@ class BrowseProjectsViewModelTest {
 
         projectViewModel.fetchProjects()
 
-        verify(getProjects).execute(captor.capture(), eq(null))
+        verify(getProjects, times(2)).execute(captor.capture(), eq(null))
         captor.firstValue.onNext(projects)
 
         assertEquals(ResourceState.SUCCESS,
@@ -78,7 +78,7 @@ class BrowseProjectsViewModelTest {
 
         projectViewModel.fetchProjects()
 
-        verify(getProjects).execute(captor.capture(), eq(null))
+        verify(getProjects, times(2)).execute(captor.capture(), eq(null))
         captor.firstValue.onNext(projects)
 
         assertEquals(projectViews,
@@ -89,7 +89,7 @@ class BrowseProjectsViewModelTest {
     fun fetchProjectsReturnsError() {
         projectViewModel.fetchProjects()
 
-        verify(getProjects).execute(captor.capture(), eq(null))
+        verify(getProjects, times(2)).execute(captor.capture(), eq(null))
         captor.firstValue.onError(RuntimeException())
 
         assertEquals(ResourceState.ERROR,
@@ -101,7 +101,7 @@ class BrowseProjectsViewModelTest {
         val errorMessage = DataFactory.randomString()
         projectViewModel.fetchProjects()
 
-        verify(getProjects).execute(captor.capture(), eq(null))
+        verify(getProjects, times(2)).execute(captor.capture(), eq(null))
         captor.firstValue.onError(RuntimeException(errorMessage))
 
         assertEquals(errorMessage,
@@ -110,7 +110,7 @@ class BrowseProjectsViewModelTest {
 
     private fun stubProjectMapperMapToView(projectView: ProjectView,
                                            project: Project) {
-        whenever(projectMapper.mapToView(project))
+        whenever(mapper.mapToView(project))
                 .thenReturn(projectView)
     }
 }
