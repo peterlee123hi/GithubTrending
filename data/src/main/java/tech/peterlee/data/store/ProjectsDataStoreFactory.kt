@@ -7,7 +7,7 @@ class ProjectsDataStoreFactory @Inject constructor(
     private val projectsCacheDataStore: ProjectsCacheDataStore,
     private val projectsRemoteDataStore: ProjectsRemoteDataStore
 ) {
-    open fun getDataStore(projectsCached: Boolean,
+    fun getDataStore(projectsCached: Boolean,
                           cacheExpired: Boolean): ProjectsDataStore {
         return if (projectsCached && !cacheExpired) {
             projectsCacheDataStore

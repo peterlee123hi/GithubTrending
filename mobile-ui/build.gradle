@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -9,9 +10,13 @@ android {
     buildToolsVersion appConfigurations["androidBuildToolsVersion"]
 
     defaultConfig {
+        applicationId "tech.peterlee.mobile_ui"
         minSdkVersion appConfigurations["androidMinSdkVersion"]
         targetSdkVersion appConfigurations["androidTargetSdkVersion"]
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        versionCode 1
+        versionName "1.0"
     }
 
     buildTypes {
@@ -62,6 +67,7 @@ dependencies {
     implementation mobileUiDependencies.roomRuntime
     implementation mobileUiDependencies.roomRxJava
 
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     compileOnly mobileUiDependencies.glassfishAnnotation
 
     kapt mobileUiDependencies.glideCompiler
