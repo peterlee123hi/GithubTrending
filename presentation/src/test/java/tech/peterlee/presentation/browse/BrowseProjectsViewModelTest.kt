@@ -43,7 +43,7 @@ class BrowseProjectsViewModelTest {
         RxAndroidPlugins.setInitMainThreadSchedulerHandler {
             _ -> Schedulers.trampoline()
         }
-        projectViewModel = BrowseProjectsViewModel(getProjects, projectMapper, bookmarkProject, unbookmarkProject)
+        projectViewModel = BrowseProjectsViewModel(getProjects, bookmarkProject, unbookmarkProject, projectMapper)
     }
 
     @Test
