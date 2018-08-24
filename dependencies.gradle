@@ -18,6 +18,7 @@ ext {
     okHttpVersion = "3.11.0"
     retrofitVersion = "2.4.0"
     roomVersion = "1.1.0"
+    archComponentsVersion = "1.0.0"
 
     // Testing
     jUnitVersion = "4.12"
@@ -27,6 +28,29 @@ ext {
     androidSupportAnnotationsVersion = "27.1.1"
     androidSupportRunnerVersion = "1.0.1"
     androidSupportRulesVersion = "1.0.1"
+
+    presentationDependencies = [
+            daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
+            dagger:             "com.google.dagger:dagger:${daggerVersion}",
+            rxKotlin:           "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}",
+            kotlin:             "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}",
+            rxAndroid:          "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            javaxInject:        "javax.inject:javax.inject:${javaxInjectVersion}",
+            androidAnnotations: "com.android.support:support-annotations:${androidAnnotationsVersion}",
+            archRuntime:        "android.arch.lifecycle:runtime:${archComponentsVersion}",
+            archExtensions:     "android.arch.lifecycle:extensions:${archComponentsVersion}",
+            archCompiler:       "android.arch.lifecycle:compiler:${archComponentsVersion}"
+    ]
+
+    presentationTestDependencies = [
+            junit:              "junit:junit:${jUnitVersion}",
+            kotlinJUnit:        "org.jetbrains.kotlin:kotlin-test-junit:${kotlinVersion}",
+            mockito:            "com.nhaarman.mockitokotlin2:mockito-kotlin:${mockitoKotlinVersion}",
+            assertj:            "org.assertj:assertj-core:${assertJVersion}",
+            archTesting:        "android.arch.core:core-testing:${roomVersion}",
+            robolectric:        "org.robolectric:robolectric:${robolectricVersion}"
+    ]
 
     domainDependencies = [
             javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
