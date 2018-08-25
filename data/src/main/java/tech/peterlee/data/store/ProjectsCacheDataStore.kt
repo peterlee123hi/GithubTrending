@@ -2,10 +2,8 @@ package tech.peterlee.data.store
 
 import io.reactivex.Completable
 import io.reactivex.Flowable
-import io.reactivex.Observable
 import tech.peterlee.data.model.ProjectEntity
 import tech.peterlee.data.repository.ProjectsCache
-import tech.peterlee.data.repository.ProjectsDataStore
 import javax.inject.Inject
 
 class ProjectsCacheDataStore @Inject constructor(

@@ -85,9 +85,11 @@ class BrowseActivity : AppCompatActivity() {
                 recycler_projects.visibility = View.GONE
             }
             else -> {
-                progress.visibility = View.VISIBLE
+                progress.visibility = View.GONE
                 recycler_projects.visibility = View.GONE
-                Toast.makeText(applicationContext, "Error loading projects...", Toast.LENGTH_SHORT)
+
+                val toast = Toast.makeText(applicationContext, "Error loading projects...", Toast.LENGTH_LONG)
+                toast.show()
             }
         }
     }

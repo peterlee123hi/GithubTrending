@@ -76,8 +76,10 @@ class BookmarkedActivity: AppCompatActivity() {
             }
             else -> {
                 progress.visibility = View.GONE
-                recycler_projects.visibility = View.VISIBLE
-                Toast.makeText(applicationContext, "Error loading projects...", Toast.LENGTH_SHORT)
+                recycler_projects.visibility = View.GONE
+
+                val toast = Toast.makeText(applicationContext, "Error loading projects...", Toast.LENGTH_LONG)
+                toast.show()
             }
         }
     }

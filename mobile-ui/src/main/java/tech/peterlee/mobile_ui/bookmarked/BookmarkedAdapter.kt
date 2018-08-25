@@ -39,14 +39,8 @@ class BookmarkedAdapter @Inject constructor(): RecyclerView.Adapter<BookmarkedAd
     }
 
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        var avatarImage: ImageView
-        var ownerNameText: TextView
-        var projectNameText: TextView
-
-        init {
-            avatarImage = view.findViewById(R.id.image_owner_avatar)
-            ownerNameText = view.findViewById(R.id.text_owner_name)
-            projectNameText = view.findViewById(R.id.text_project_name)
-        }
+        var avatarImage: ImageView = view.findViewById(R.id.image_owner_avatar)
+        var ownerNameText: TextView = view.findViewById(R.id.text_owner_name)
+        var projectNameText: TextView = view.findViewById(R.id.text_project_name)
     }
 }

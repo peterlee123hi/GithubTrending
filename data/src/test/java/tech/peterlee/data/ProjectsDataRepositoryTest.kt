@@ -13,7 +13,7 @@ import org.junit.runners.JUnit4
 import tech.peterlee.data.mapper.ProjectMapper
 import tech.peterlee.data.model.ProjectEntity
 import tech.peterlee.data.repository.ProjectsCache
-import tech.peterlee.data.repository.ProjectsDataStore
+import tech.peterlee.data.store.ProjectsDataStore
 import tech.peterlee.data.store.ProjectsDataStoreFactory
 import tech.peterlee.data.test.factory.ProjectFactory
 import tech.peterlee.domain.model.Project

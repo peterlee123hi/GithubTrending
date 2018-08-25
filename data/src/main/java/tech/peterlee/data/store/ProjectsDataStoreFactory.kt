@@ -1,6 +1,5 @@
 package tech.peterlee.data.store
 
-import tech.peterlee.data.repository.ProjectsDataStore
 import javax.inject.Inject
 
 class ProjectsDataStoreFactory @Inject constructor(

@@ -1,5 +1,6 @@
 package tech.peterlee.cache
 
+import android.util.Log
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single

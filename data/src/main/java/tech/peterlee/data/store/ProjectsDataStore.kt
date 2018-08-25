@@ -1,4 +1,4 @@
-package tech.peterlee.data.repository
+package tech.peterlee.data.store
 
 import io.reactivex.Completable
 import io.reactivex.Flowable

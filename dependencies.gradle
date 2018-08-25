@@ -89,6 +89,7 @@ ext {
             rxAndroid:          "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
             javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
             javaxInject:        "javax.inject:javax.inject:${javaxInjectVersion}",
+            timber:             "com.jakewharton.timber:timber:${timberVersion}",
             androidAnnotations: "com.android.support:support-annotations:${androidAnnotationsVersion}",
             archRuntime:        "android.arch.lifecycle:runtime:${archComponentsVersion}",
             archExtensions:     "android.arch.lifecycle:extensions:${archComponentsVersion}",
@@ -108,7 +109,8 @@ ext {
             kotlin:             "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}",
             javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
             javaxInject:        "javax.inject:javax.inject:${javaxInjectVersion}",
-            rxJava:             "io.reactivex.rxjava2:rxkotlin:${rxJavaVersion}"
+            rxJava:             "io.reactivex.rxjava2:rxkotlin:${rxJavaVersion}",
+            timber:             "com.jakewharton.timber:timber:${timberVersion}"
     ]
 
     domainTestDependencies = [
@@ -122,6 +124,7 @@ ext {
             kotlin:             "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}",
             javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
             javaxInject:        "javax.inject:javax.inject:${javaxInjectVersion}",
+            timber:             "com.jakewharton.timber:timber:${timberVersion}"
     ]
 
     dataTestDependencies = [
@@ -143,7 +146,8 @@ ext {
             okHttpLogger:      "com.squareup.okhttp3:logging-interceptor:${okHttpVersion}",
             retrofit:           "com.squareup.retrofit2:retrofit:${retrofitVersion}",
             retrofitConverter:  "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
-            retrofitAdapter:    "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}"
+            retrofitAdapter:    "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}",
+            timber:             "com.jakewharton.timber:timber:${timberVersion}"
     ]
 
     remoteTestDependencies = [
@@ -163,7 +167,8 @@ ext {
             javaxInject:        "javax.inject:javax.inject:${javaxInjectVersion}",
             roomRuntime:        "android.arch.persistence.room:runtime:${roomVersion}",
             roomCompiler:       "android.arch.persistence.room:compiler:${roomVersion}",
-            roomRxJava:         "android.arch.persistence.room:rxjava2:${roomVersion}"
+            roomRxJava:         "android.arch.persistence.room:rxjava2:${roomVersion}",
+            timber:             "com.jakewharton.timber:timber:${timberVersion}"
     ]
 
     cacheTestDependencies = [
