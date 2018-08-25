@@ -16,7 +16,7 @@ import tech.peterlee.presentation.state.ResourceState
 import javax.inject.Inject
 
 class BrowseProjectsViewModel @Inject internal constructor(
-        private val getProjects: GetProjects?,
+        private val getProjects: GetProjects,
         private val mapper: ProjectViewMapper,
         private val bookmarkProject: BookmarkProject,
         private val unbookmarkProject: UnbookmarkProject
@@ -30,7 +30,7 @@ class BrowseProjectsViewModel @Inject internal constructor(
 
     override fun onCleared() {
         super.onCleared()
-        getProjects?.dispose()
+        getProjects.dispose()
     }
 
     fun getProjects(): LiveData<Resource<List<ProjectView>>> {
@@ -39,7 +39,7 @@ class BrowseProjectsViewModel @Inject internal constructor(
 
     fun fetchProjects() {
         liveData.postValue(Resource(ResourceState.LOADING, null, null))
-        return getProjects?.execute(ProjectsSubscriber())!!
+        return getProjects.execute(ProjectsSubscriber())
     }
 
     fun bookmarkProject(projectId: String) {

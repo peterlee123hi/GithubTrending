@@ -2,13 +2,14 @@
 Android Clean Architecture tutorial on Caster.io
 
 ## Ending TODO
-- Look over, understand, and format the activities and layouts in the mobile-ui module
-- Fix the bugs and dependency injection issues
-- Build the mobile-ui module successfully
-- Move the instrumentation tests over to this project
-- Test project
-- Test on phone
-- Done!
+- [x] Look over, understand, and format the activities and layouts in the mobile-ui module
+- [x] Fix the bugs and dependency injection issues
+- [x] Build the mobile-ui module successfully
+- [x] Move the instrumentation tests over to this project
+- [x] Test project
+- [ ] Debug project to work on phone
+- [ ] Test on phone
+- [ ] Done!
 
 ## Notes
 - Layers

@@ -67,7 +67,7 @@ dependencies {
     implementation mobileUiDependencies.roomRuntime
     implementation mobileUiDependencies.roomRxJava
 
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation mobileUiDependencies.constraintLayout
     compileOnly mobileUiDependencies.glassfishAnnotation
 
     kapt mobileUiDependencies.glideCompiler

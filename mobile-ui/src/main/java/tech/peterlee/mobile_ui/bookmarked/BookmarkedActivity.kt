@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import android.widget.Toast
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_bookmarked.*
 import tech.peterlee.mobile_ui.R
@@ -72,6 +73,11 @@ class BookmarkedActivity: AppCompatActivity() {
             ResourceState.LOADING -> {
                 progress.visibility = View.VISIBLE
                 recycler_projects.visibility = View.GONE
+            }
+            else -> {
+                progress.visibility = View.GONE
+                recycler_projects.visibility = View.VISIBLE
+                Toast.makeText(applicationContext, "Error loading projects...", Toast.LENGTH_SHORT)
             }
         }
     }

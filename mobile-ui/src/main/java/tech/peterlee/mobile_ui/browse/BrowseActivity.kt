@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_browse.*
 
@@ -82,6 +83,11 @@ class BrowseActivity : AppCompatActivity() {
             ResourceState.LOADING -> {
                 progress.visibility = View.VISIBLE
                 recycler_projects.visibility = View.GONE
+            }
+            else -> {
+                progress.visibility = View.VISIBLE
+                recycler_projects.visibility = View.GONE
+                Toast.makeText(applicationContext, "Error loading projects...", Toast.LENGTH_SHORT)
             }
         }
     }

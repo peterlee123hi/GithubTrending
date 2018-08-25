@@ -15,6 +15,7 @@ class ProjectsDataRepository @Inject constructor(
         private val cache: ProjectsCache,
         private val factory: ProjectsDataStoreFactory
 ) : ProjectsRepository {
+
     override fun getProjects(): Observable<List<Project>> {
         return Observable.zip(
                 cache.areProjectsCached().toObservable(),

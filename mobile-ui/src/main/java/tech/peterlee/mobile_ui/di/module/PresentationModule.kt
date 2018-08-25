@@ -1,12 +1,32 @@
 package tech.peterlee.mobile_ui.di.module
 
 import android.arch.lifecycle.ViewModel
+import android.arch.lifecycle.ViewModelProvider
+import dagger.Binds
 import dagger.MapKey
 import dagger.Module
+import dagger.multibindings.IntoMap
+import tech.peterlee.mobile_ui.di.ViewModelFactory
+import tech.peterlee.presentation.BrowseBookmarkedProjectsViewModel
+import tech.peterlee.presentation.BrowseProjectsViewModel
 import kotlin.reflect.KClass
 
 @Module
 abstract class PresentationModule {
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(BrowseProjectsViewModel::class)
+    abstract fun bindBrowseProjectsViewModel(viewModel: BrowseProjectsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(BrowseBookmarkedProjectsViewModel::class)
+    abstract fun bindBrowseBookmarkedProjectsViewModel(
+            viewModel: BrowseBookmarkedProjectsViewModel): ViewModel
+
+    @Binds
+    abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
 }
 
 @MustBeDocumented
