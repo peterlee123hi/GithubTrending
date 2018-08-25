@@ -107,5 +107,3 @@ dependencies {
         exclude module: 'design'
     }
 }
-
-apply plugin: 'kotlin-android-extensions'

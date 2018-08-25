@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="tech.peterlee.mobile_ui">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:name=".GithubTrendingApplication"
         android:allowBackup="true"
@@ -23,6 +21,10 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".bookmarked.BookmarkedActivity"
+            android:label="@string/title_bookmarked" />
     </application>
 
 </manifest>

@@ -105,6 +105,7 @@ ext {
     ]
 
     domainDependencies = [
+            kotlin:             "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}",
             javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
             javaxInject:        "javax.inject:javax.inject:${javaxInjectVersion}",
             rxJava:             "io.reactivex.rxjava2:rxkotlin:${rxJavaVersion}"

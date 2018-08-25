@@ -6,8 +6,8 @@ dependencies {
 
     implementation project(':domain')
 
-    implementation dataDependencies.javaxAnnotation
     implementation dataDependencies.kotlin
+    implementation dataDependencies.javaxAnnotation
     implementation dataDependencies.javaxInject
     implementation dataDependencies.rxKotlin
 

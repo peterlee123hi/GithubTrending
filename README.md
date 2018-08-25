@@ -1,6 +1,15 @@
 # Github Trending
 Android Clean Architecture tutorial on Caster.io
 
+## Ending TODO
+- Look over, understand, and format the activities and layouts in the mobile-ui module
+- Fix the bugs and dependency injection issues
+- Build the mobile-ui module successfully
+- Move the instrumentation tests over to this project
+- Test project
+- Test on phone
+- Done!
+
 ## Notes
 - Layers
     - Data 

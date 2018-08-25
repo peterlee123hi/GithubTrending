@@ -5,10 +5,18 @@ import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
 import tech.peterlee.mobile_ui.GithubTrendingApplication
+import tech.peterlee.mobile_ui.di.module.*
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = arrayOf(AndroidInjectionModule::class))
+@Component(modules = arrayOf(
+        AndroidInjectionModule::class,
+        AppModule::class,
+        CacheModule::class,
+        DataModule::class,
+        PresentationModule::class,
+        RemoteModule::class,
+        UiModule::class))
 interface AppComponent {
 
     @Component.Builder
