@@ -21,6 +21,7 @@ import tech.peterlee.presentation.BrowseProjectsViewModel
 import tech.peterlee.presentation.model.ProjectView
 import tech.peterlee.presentation.state.Resource
 import tech.peterlee.presentation.state.ResourceState
+import timber.log.Timber
 import javax.inject.Inject
 
 class BrowseActivity : AppCompatActivity() {
@@ -85,6 +86,7 @@ class BrowseActivity : AppCompatActivity() {
                 recycler_projects.visibility = View.GONE
             }
             else -> {
+                Timber.d(resource.message)
                 progress.visibility = View.GONE
                 recycler_projects.visibility = View.GONE
 

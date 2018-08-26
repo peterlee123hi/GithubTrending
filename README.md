@@ -7,9 +7,13 @@ Android Clean Architecture tutorial on Caster.io
 - [x] Build the mobile-ui module successfully
 - [x] Move the instrumentation tests over to this project
 - [x] Test project
-- [ ] Debug project to work on phone
-- [ ] Test on phone
-- [ ] Done!
+- [x] Debug project to work on phone
+- [x] Test on phone
+- [ ] Clean up gradle files
+- [ ] Do a general code clean up (remove warnings as much as possible)
+- [ ] Fix UI things
+- [ ] Experiment
+- [ ] Done! Harness the power of Android dev to create more apps :D
 
 ## Notes
 - Layers

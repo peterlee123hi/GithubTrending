@@ -1,4 +1,4 @@
-package tech.peterlee.mobile_ui
+package tech.peterlee.mobile_ui.test
 
 import android.app.Application
 import android.content.Context

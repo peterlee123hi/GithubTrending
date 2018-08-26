@@ -5,7 +5,7 @@ import dagger.BindsInstance
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule
 import tech.peterlee.domain.repository.ProjectsRepository
-import tech.peterlee.mobile_ui.TestApplication
+import tech.peterlee.mobile_ui.test.TestApplication
 import tech.peterlee.mobile_ui.di.module.PresentationModule
 import tech.peterlee.mobile_ui.di.module.UiModule
 import javax.inject.Singleton

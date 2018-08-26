@@ -15,7 +15,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import tech.peterlee.domain.model.Project
 import tech.peterlee.mobile_ui.R
-import tech.peterlee.mobile_ui.TestApplication
+import tech.peterlee.mobile_ui.test.TestApplication
 import tech.peterlee.mobile_ui.test.factory.ProjectDataFactory
 
 @RunWith(AndroidJUnit4::class)

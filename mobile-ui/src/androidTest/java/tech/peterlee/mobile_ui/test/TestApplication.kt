@@ -1,4 +1,4 @@
-package tech.peterlee.mobile_ui
+package tech.peterlee.mobile_ui.test
 
 import android.app.Activity
 import android.app.Application
@@ -6,7 +6,7 @@ import android.support.test.InstrumentationRegistry
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
-import tech.peterlee.mobile_ui.di.DaggerTestApplicationComponent
+import tech.peterlee.mobile_ui.di.DaggerTestAppComponent
 import tech.peterlee.mobile_ui.di.TestAppComponent
 import javax.inject.Inject
 
@@ -24,7 +24,7 @@ class TestApplication: Application(), HasActivityInjector {
 
     override fun onCreate() {
         super.onCreate()
-        appComponent = DaggerTestApplicationComponent.builder().application(this).build()
+        appComponent = DaggerTestAppComponent.builder().application(this).build()
         appComponent.inject(this)
     }
 

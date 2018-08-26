@@ -3,6 +3,7 @@ package tech.peterlee.presentation
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import android.util.Log
 import io.reactivex.observers.DisposableCompletableObserver
 import io.reactivex.observers.DisposableObserver
 import tech.peterlee.domain.interactor.bookmark.BookmarkProject
