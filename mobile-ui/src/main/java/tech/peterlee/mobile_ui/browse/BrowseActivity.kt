@@ -86,7 +86,6 @@ class BrowseActivity : AppCompatActivity() {
                 recycler_projects.visibility = View.GONE
             }
             else -> {
-                Timber.d(resource.message)
                 progress.visibility = View.GONE
                 recycler_projects.visibility = View.GONE
 
